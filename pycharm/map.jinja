@@ -33,7 +33,7 @@
 {% endif %}
 
 # Update dynamic parameters
-{% do ide.jetbrains.update({ 'realhome': _home, 'realcmd': _home ~ ide.command },) %}
+{% do ide.jetbrains.update({ 'realhome': _home, 'realcmd': _home ~ ide.command, 'version': jdata[ pcode ][0]['version'] },) %}
 {% do ide.dl.update({
        'source_url'  : jdata[ pcode ][0]['downloads'][ ide.osflavour ]['link'],
        'archive_name': jdata[ pcode ][0]['downloads'][ ide.osflavour ]['link'].split('/') | last ,

@@ -1,5 +1,6 @@
 {% from "pycharm/map.jinja" import pycharm with context %}
 
+{% if 1 == salt['cmd.retcode']('test -f {{ pycharm.jetbrains.home }}/{{ pycharm.jetbrains.edition }}-{{ pycharm.jetbrains.version }}.formula') %}
 # Cleanup first
 pycharm-remove-prev-archive:
   file.absent:
@@ -94,3 +95,8 @@ pycharm-remove-archive:
       - archive: pycharm-package-install
 
 {% endif %}
+
+pycharm-deploy-file:
+  file.touch:
+    - name: '{{ pycharm.jetbrains.home }}/{{ pycharm.jetbrains.edition }}-{{ pycharm.jetbrains.version }}.formula'
+{%- endif %}
